@@ -15,6 +15,6 @@ class SkillCalculator {
         String username = sc.nextLine();
         sc.close();
         Player player = new Player(username);
-        System.out.println(player.toString());
+        player.PrintPlayerStats();
     }
 }

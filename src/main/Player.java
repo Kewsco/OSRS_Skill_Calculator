@@ -1,7 +1,17 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+
+import Skills.Attack;
+import Skills.Defence;
+import Skills.Hitpoints;
+import Skills.Magic;
+import Skills.Prayer;
+import Skills.Ranged;
 import Skills.Skill;
+import Skills.Strength;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,10 +27,11 @@ public class Player {
     private int totalXP;
     private int combatLevel;
 
-    public List<Skill> skills;
+    public Skill[] skills = new Skill[23];
 
     public Player(String username){
         this.username = username;
+        PopulateSkillList();
         GetPlayerStats();
     }
 
@@ -29,16 +40,36 @@ public class Player {
             URL url = new URL(CreatePlayerURL());
             URLConnection conn = url.openConnection();
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line = reader.readLine();
-            int[] statLine = ParseStat(line);
+            int[] statLine = ParseStat(reader.readLine());
             this.overallRank = statLine[0];
             this.totalLevel = statLine[1];
             this.totalXP = statLine[2];
+            for(int i = 0; i < 7; i++){ // Change to 23 when ready for all skills.
+                statLine = ParseStat(reader.readLine());
+                skills[i].SetCurrentRank(statLine[0]);
+                skills[i].SetCurrentLevel(statLine[1]);
+                skills[i].SetCurrentXP(statLine[2]);
+            }
+            //TODO:- Read ALL skill data and create the required objects.
             reader.close();
         } catch (MalformedURLException ex){
             ex.printStackTrace();
         } catch (IOException ex){
             System.out.println("Player not found...");
+        }
+    }
+
+    public void PrintPlayerStats(){
+        //TODO:- Format output so it looks neat in terminal.
+        for (Skill skill : skills) {
+            try{
+                System.out.println("[" + skill.GetName() + "]" + 
+                                   " - Rank: " + skill.GetFormattedRank() + 
+                                   " - Level: " + skill.GetCurrentLevel() + 
+                                   " - XP: " + skill.GetFormattedXP());
+            } catch(NullPointerException ex){
+                // Temporary whilst not all skills are instantiated.
+            }
         }
     }
 
@@ -69,5 +100,15 @@ public class Player {
     private void CalculateCombatLevel(){
         // TODO:- Calculate the players total level based on their combat skills.
         this.combatLevel = 3;
+    }
+
+    private void PopulateSkillList(){
+        skills[0] = new Attack();
+        skills[1] = new Defence();
+        skills[2] = new Strength();
+        skills[3] = new Hitpoints();
+        skills[4] = new Ranged();
+        skills[5] = new Prayer();
+        skills[6] = new Magic();
     }
 }
