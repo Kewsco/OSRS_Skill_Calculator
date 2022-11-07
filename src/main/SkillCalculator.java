@@ -1,20 +1,21 @@
-import java.util.Scanner;
-
-import Skills.*;
-import Skills.Skill;
-
 class SkillCalculator {
+    static AppState state;
+    static Menu menu;
     public static void main(String[] args) {
-        UserIntro();
+        state = AppState.GetInstance();
+        menu = new Menu();
+        while(true)
+            MenuHandler();
     }
 
-    public static void UserIntro(){
-        System.out.println("----- Oldschool Runescape Skill Calculator -----");
-        System.out.println("Enter your username: ");
-        Scanner sc = new Scanner(System.in);
-        String username = sc.nextLine();
-        sc.close();
-        Player player = new Player(username);
-        player.PrintPlayerStats();
+    public static void MenuHandler(){
+        switch(AppState.GetCurrentMenu()){
+            case 0:
+                menu.PlayerInit();
+                break;
+            case 1:
+                menu.MainMenu();
+                break;
+        }
     }
 }
