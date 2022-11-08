@@ -1,11 +1,4 @@
-import Skills.Attack;
-import Skills.Defence;
-import Skills.Hitpoints;
-import Skills.Magic;
-import Skills.Prayer;
-import Skills.Ranged;
-import Skills.Skill;
-import Skills.Strength;
+import Skills.*;
 
 public class Player {
     
@@ -59,22 +52,22 @@ public class Player {
         skills[4] = new Ranged();
         skills[5] = new Prayer();
         skills[6] = new Magic();
-        // skills[7] = new ();
-        // skills[8] = new ();
-        // skills[9] = new ();
-        // skills[10] = new ();
-        // skills[11] = new ();
-        // skills[12] = new ();
-        // skills[13] = new ();
-        // skills[14] = new ();
-        // skills[15] = new ();
-        // skills[16] = new ();
-        // skills[17] = new ();
-        // skills[18] = new ();
-        // skills[19] = new ();
-        // skills[20] = new ();
-        // skills[21] = new ();
-        // skills[22] = new ();
+        skills[7] = new Cooking();
+        skills[8] = new Woodcutting();
+        skills[9] = new Fletching();
+        skills[10] = new Fishing();
+        skills[11] = new Firemaking();
+        skills[12] = new Crafting();
+        skills[13] = new Smithing();
+        skills[14] = new Mining();
+        skills[15] = new Herblore();
+        skills[16] = new Agility();
+        skills[17] = new Thieving();
+        skills[18] = new Slayer();
+        skills[19] = new Farming();
+        skills[20] = new Runecrafting();
+        skills[21] = new Hunter();
+        skills[22] = new Construction();
     }
 
     public String GetUsername(){ return this.username; }

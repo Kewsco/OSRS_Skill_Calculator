@@ -3,6 +3,7 @@ enum PlankType {Plank, Oak, Teak, Mahogany}
 public class Construction extends Skill{
     PlankType plankType;
     public Construction(){
+        this.id = 22;
         this.name = "Construction";
         this.category = Category.Production;
     }
