@@ -2,17 +2,18 @@ import java.util.Scanner;
 
 public class Menu {
     Scanner sc;
+    PlayerService ps;
     public Menu(){
         sc = new Scanner(System.in);
-        PlayerInit();
+        ps = new PlayerService();
     }
 
     public void PlayerInit(){
         System.out.println("----- Oldschool Runescape Skill Calculator -----");
-        System.out.print("Enter your username: "); 
+        System.out.print("OSRS username: "); 
         String username = sc.nextLine();
         Player player = new Player(username);
-        int status = player.GetPlayerStats();
+        int status = PlayerService.GetPlayerStats(player);
         if(status == 1){
             AppState.SetMenu(CurrentMenu.MainMenu);
         }
@@ -40,7 +41,7 @@ public class Menu {
             case 1:
                 player.PrintPlayerStats();
                 System.out.print("\nPress Enter to Continue... ");
-                String lol = sc.nextLine();
+                sc.nextLine();
                 MainMenu();
                 break;
             case 2:
