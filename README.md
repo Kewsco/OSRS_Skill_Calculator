@@ -3,7 +3,7 @@ A console application for Oldschool Runescape players load their character stats
 
 Current Features:
 * Basic menu interaction.
-* Retrieval of a specified users statistics (levels/total/experience).
+* Retrieval of statistics of a specified user. (levels/total/experience).
 
 #### API Used:
 [Runescape API](https://runescape.wiki/w/Application_programming_interface)
