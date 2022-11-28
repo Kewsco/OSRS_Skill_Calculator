@@ -1,3 +1,5 @@
+package SkillCalc;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +22,7 @@ public final class PlayerService {
             player.SetOverallRank(statLine[0]);
             player.SetTotalLevel(statLine[1]);;
             player.SetTotalXP(statLine[2]);
-            for(int i = 0; i < 7; i++){ // Change to 23 when ready for all skills.
+            for(int i = 0; i < 23; i++){ 
                 Skill sk = player.GetSkill(i);
                 statLine = ParseStat(reader.readLine());
                 sk.SetCurrentRank(statLine[0]);

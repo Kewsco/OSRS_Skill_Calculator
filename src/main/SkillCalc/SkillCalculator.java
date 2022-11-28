@@ -1,3 +1,4 @@
+package SkillCalc;
 class SkillCalculator {
     static AppState state;
     static Menu menu;
@@ -15,6 +16,9 @@ class SkillCalculator {
                 break;
             case 1:
                 menu.MainMenu();
+                break;
+            case 2:
+                menu.CalculatorMenu();
                 break;
         }
     }

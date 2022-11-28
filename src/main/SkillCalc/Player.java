@@ -1,3 +1,4 @@
+package SkillCalc;
 import Skills.*;
 
 public class Player {
@@ -73,9 +74,15 @@ public class Player {
     public String GetUsername(){ return this.username; }
     public Skill GetSkill(int index) { return skills[index];}
     public Skill[] GetAllSkills(){ return skills; }
+    public int GetTotalLevel() { return totalLevel; }
+
 
     public void SetTotalLevel(int lvl){ this.totalLevel = lvl;}
     public void SetOverallRank(int rank){ this.overallRank = rank;}
     public void SetTotalXP(int xp){ this.totalXP = xp;}
     public void SetCombatLevel(double cmb) {this.combatLevel = cmb;}
+
+    public int GetSkillLevelByArrayIndex(int index){
+        return skills[index].GetCurrentLevel();
+    }
 }
